@@ -150,7 +150,7 @@ module ActionController
               render options.merge(:action => action_name)
               return true
             elsif object.respond_to?(:"to_#{priority.to_sym}")
-              render options.merge(:text => object.send(:"to_#{priority.to_sym}"))
+              render options.merge(:text => object.send(:"to_#{priority.to_sym}", { :root => resource_collection_name.to_s }))
               return true
             end
           end
